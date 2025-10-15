@@ -24,13 +24,13 @@ class Client(discord.Client):
                     chamber += 1
                     if chamber == cc:
                         runninggame = False
-                        await message.channel.send(f"the gun fired! **{message.author.display_name}** has been *taken care of*!\n-# type `russianroulette start` to start a new round!")
+                        await message.channel.send(f"The gun fired! **{message.author.display_name}** has been *taken care of*!\n-# type `russianroulette start` to start a new round!")
                         try: 
                             if isinstance(message.author, discord.Member):
                                 until = datetime.now(timezone.utc) + timedelta(seconds=60) # Timeout duration in seconds.
                             await message.author.edit(timed_out_until=until)
                         except(Exception):
-                             await message.channel.send(f"Exception occured: `{Exception}`") # The most common exception is caused by the bot trying to time out an administrator.
+                             await message.channel.send(f"Exception occured: `{Exception}`") # The most common exception is caused by the bot trying to time out an administrator, or lacking the permissions to do so.
                     else:
                         await message.channel.send(f'Phew, this chamber was empty! **{message.author.display_name}** gets to live another day!')
                         if chamber == 5:
